@@ -38,6 +38,7 @@ Coverage includes:
 | **aster-api-account-v1** | Same for v1 API |
 | **aster-api-errors** | Error codes, rate limits, 429/418 handling, retry/backoff |
 | **aster-api-errors-v1** | Same for v1 API |
+| **aster-deposit-fund** | Deposit funds to Aster from wallet; supported assets and deposit address via BAPI; private key from env; ETH, BSC, Arbitrum |
 
 ## Using with OpenClaw
 
