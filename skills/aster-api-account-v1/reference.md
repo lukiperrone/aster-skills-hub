@@ -1,42 +1,15 @@
-# Aster API Account v1 – Reference
+# Account v1 – Response shapes
 
-## Balance item (v2/balance)
+**v2/balance item:** accountAlias, asset, balance, crossWalletBalance, crossUnPnl, availableBalance, maxWithdrawAmount, marginAvailable, updateTime
 
-accountAlias, asset, balance, crossWalletBalance, crossUnPnl, availableBalance, maxWithdrawAmount, marginAvailable, updateTime
+**v4/account:** feeTier, canTrade, canDeposit, canWithdraw, updateTime, totalInitialMargin, totalMaintMargin, totalWalletBalance, totalUnrealizedProfit, totalMarginBalance, totalPositionInitialMargin, totalOpenOrderInitialMargin, totalCrossWalletBalance, totalCrossUnPnl, availableBalance, maxWithdrawAmount, assets[], positions[]
 
-## Account (v4/account top level)
+**assets[]:** asset, walletBalance, unrealizedProfit, marginBalance, maintMargin, initialMargin, positionInitialMargin, openOrderInitialMargin, crossWalletBalance, crossUnPnl, availableBalance, maxWithdrawAmount, marginAvailable, updateTime
 
-feeTier, canTrade, canDeposit, canWithdraw, updateTime, totalInitialMargin, totalMaintMargin, totalWalletBalance, totalUnrealizedProfit, totalMarginBalance, totalPositionInitialMargin, totalOpenOrderInitialMargin, totalCrossWalletBalance, totalCrossUnPnl, availableBalance, maxWithdrawAmount, assets[], positions[]
+**positions[]:** symbol, initialMargin, maintMargin, unrealizedProfit, positionInitialMargin, openOrderInitialMargin, leverage, isolated, entryPrice, maxNotional, positionSide, positionAmt, updateTime
 
-## Account assets[] item
+**positionRisk:** entryPrice, marginType, isAutoAddMargin, isolatedMargin, leverage, liquidationPrice, markPrice, maxNotionalValue, positionAmt, symbol, unRealizedProfit, positionSide (BOTH | LONG/SHORT), updateTime
 
-asset, walletBalance, unrealizedProfit, marginBalance, maintMargin, initialMargin, positionInitialMargin, openOrderInitialMargin, crossWalletBalance, crossUnPnl, availableBalance, maxWithdrawAmount, marginAvailable, updateTime
+**incomeType:** TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, MARKET_MERCHANT_RETURN_REWARD | **Income:** symbol, incomeType, income, asset, info, time, tranId, tradeId | **Transfer:** tranId, status
 
-## Account positions[] item
-
-symbol, initialMargin, maintMargin, unrealizedProfit, positionInitialMargin, openOrderInitialMargin, leverage, isolated, entryPrice, maxNotional, positionSide, positionAmt, updateTime
-
-## positionRisk item (one-way)
-
-entryPrice, marginType, isAutoAddMargin, isolatedMargin, leverage, liquidationPrice, markPrice, maxNotionalValue, positionAmt, symbol, unRealizedProfit, positionSide (BOTH), updateTime
-
-## positionRisk item (hedge)
-
-Same fields; positionSide LONG or SHORT; positionAmt positive (long) or negative (short).
-
-## incomeType
-
-TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, MARKET_MERCHANT_RETURN_REWARD
-
-## Income item
-
-symbol, incomeType, income, asset, info, time, tranId, tradeId
-
-## Transfer response
-
-tranId, status (e.g. SUCCESS)
-
-## Notes
-
-- clientTranId must be unique (e.g. within 7 days).
-- Margin type cannot be changed if open orders or position exist (see error codes -4047, -4048).
+**Notes:** clientTranId unique (e.g. 7d). Margin type change fails if open orders/position (-4047, -4048).

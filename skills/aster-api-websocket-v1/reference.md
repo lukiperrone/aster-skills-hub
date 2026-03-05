@@ -1,41 +1,21 @@
-# Aster API WebSocket v1 – Reference
+# WebSocket v1 – Payloads
 
-## aggTrade payload
+**aggTrade:** e, E, s, a, p, q, f, l, T, m (eventTime, symbol, aggregateTradeId, price, qty, first/lastTradeId, tradeTime, buyerIsMaker)
 
-e: "aggTrade", E: eventTime, s: symbol, a: aggregateTradeId, p: price, q: quantity, f: firstTradeId, l: lastTradeId, T: tradeTime, m: buyerIsMaker
+**depthUpdate:** e, E, T, s, U, u, pu, b, a. b/a: [[price,qty],...]; qty 0 = remove level.
 
-## depthUpdate payload (diff. depth)
+**markPriceUpdate:** e, E, s, p, i, P, r, T (markPrice, indexPrice, estimatedSettlePrice, fundingRate, nextFundingTime)
 
-e: "depthUpdate", E: eventTime, T: transactionTime, s: symbol, U: firstUpdateId, u: finalUpdateId, pu: previous finalUpdateId, b: [[price, qty], ...], a: [[price, qty], ...]. Quantity 0 = remove level.
+**bookTicker:** u, E, T, s, b, B, a, A (bestBid/Ask price & qty)
 
-## markPrice payload
+**kline (event.k):** t, T, s, i, f, L, o/c/h/l, v, n, x, q, V, Q (openTime, closeTime, symbol, interval, ohlc, volume, trades, isKlineClosed, quoteVol, takerBuyBase/Quote)
 
-e: "markPriceUpdate", E: eventTime, s: symbol, p: markPrice, i: indexPrice, P: estimatedSettlePrice, r: fundingRate, T: nextFundingTime
+**ACCOUNT_UPDATE:** a: { m: reasonType, B: [{ a, wb, cw, bc }], P: [{ s, pa, ep, cr, up, mt, iw, ps }] }. m: ORDER, FUNDING_FEE, DEPOSIT, WITHDRAW, MARGIN_TRANSFER, etc.
 
-## bookTicker payload
+**ORDER_TRADE_UPDATE:** o: { s, c, S, o, f, q, p, ap, sp, x, X, i, l, z, L, N/n, T, t, ps, cp, AP, cr, rp }. x: NEW, CANCELED, TRADE, EXPIRED. X: NEW, PARTIALLY_FILLED, FILLED, CANCELED, EXPIRED, NEW_INSURANCE, NEW_ADL. c "autoclose-*" = liquidation; "adl_autoclose" = ADL.
 
-e: "bookTicker", u: updateId, E: eventTime, T: transactionTime, s: symbol, b: bestBidPrice, B: bestBidQty, a: bestAskPrice, A: bestAskQty
+**listenKeyExpired:** e, E. No more user events until new listenKey.
 
-## kline payload (event.k)
+**MARGIN_CALL:** E, cw, p: [{ s, ps, pa, mt, iw, mp, up, mm }]
 
-t: kline start, T: kline close, s: symbol, i: interval, f: firstTradeId, L: lastTradeId, o/c/h/l: open/close/high/low, v: volume, n: trades, x: isKlineClosed, q: quoteVolume, V: takerBuyBaseVolume, Q: takerBuyQuoteVolume
-
-## User data: ACCOUNT_UPDATE
-
-e: "ACCOUNT_UPDATE", E: eventTime, T: transactionTime, a: { m: reasonType, B: [{ a: asset, wb: walletBalance, cw: crossWalletBalance, bc: balanceChange }], P: [{ s: symbol, pa: positionAmt, ep: entryPrice, cr: accumulatedRealized, up: unrealizedPnl, mt: marginType, iw: isolatedWallet, ps: positionSide }] }. Reason m: ORDER, FUNDING_FEE, DEPOSIT, WITHDRAW, MARGIN_TRANSFER, MARGIN_TYPE_CHANGE, etc.
-
-## User data: ORDER_TRADE_UPDATE
-
-e: "ORDER_TRADE_UPDATE", E: eventTime, T: transactionTime, o: { s: symbol, c: clientOrderId, S: side, o: orderType, f: timeInForce, q: origQty, p: price, ap: avgPrice, sp: stopPrice, x: executionType, X: orderStatus, i: orderId, l: lastFilledQty, z: filledQty, L: lastPrice, N/n: commissionAsset/commission, T: tradeTime, t: tradeId, ps: positionSide, cp: closeAll, AP: activationPrice, cr: callbackRate, rp: realizedProfit, ... }. ExecutionType: NEW, CANCELED, TRADE, EXPIRED. OrderStatus: NEW, PARTIALLY_FILLED, FILLED, CANCELED, EXPIRED, NEW_INSURANCE, NEW_ADL. clientOrderId "autoclose-*" = liquidation; "adl_autoclose" = ADL.
-
-## User data: listenKeyExpired
-
-e: "listenKeyExpired", E: eventTime. After this, no more user events until new listenKey.
-
-## User data: MARGIN_CALL
-
-e: "MARGIN_CALL", E: eventTime, cw: crossWalletBalance, p: [{ s: symbol, ps: positionSide, pa: positionAmt, mt: marginType, iw: isolatedWallet, mp: markPrice, up: unrealizedPnl, mm: maintMarginRequired }]
-
-## User data: ACCOUNT_CONFIG_UPDATE
-
-Leverage: ac: { s: symbol, l: leverage }. Account config: ai: { j: multiAssetsMargin, f: feeDeduction, d: dualSidePosition }
+**ACCOUNT_CONFIG_UPDATE:** ac: { s, l } (leverage); ai: { j, f, d } (multiAssetsMargin, feeDeduction, dualSidePosition)
