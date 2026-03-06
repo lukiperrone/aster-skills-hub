@@ -18,4 +18,6 @@ description: Error codes, rate limits, 429/418 handling, retry/backoff for Aster
 | 20xx | Processing | -2010, -2011, -2013, -2018, -2019, -2021, -2025 |
 | 40xx | Filters | -4004, -4014, -4023, -4047, -4048, -4164 |
 
-**HTTP:** 4XX = client (403 WAF, 429, 418); 5XX = server. 503 = may have been processed—do not assume failure. Full codes: [reference.md](reference.md).
+**HTTP:** 4XX = client (403 WAF, 429, 418); 5XX = server. 503 = may have been processed—do not assume failure.
+
+Payload shapes: [reference.md](reference.md).

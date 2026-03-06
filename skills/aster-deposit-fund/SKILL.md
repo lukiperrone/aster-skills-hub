@@ -21,10 +21,6 @@ description: Deposit funds to Aster from a wallet; private key from env. Use whe
 | BSC | 56 |
 | Arbitrum | 42161 |
 
-## User confirmation
-
-
-
 ## Flow
 
 1. **Supported assets** — GET `aster/withdraw/assets?chainIds=<chainId>&networks=EVM&accountType=perp`. Response `data[]`: name, contractAddress, decimals, isNative, chainId. Use to pick asset and token contract for ERC20.
@@ -51,4 +47,4 @@ Optional: `scripts/` — Bun + viem. Install: `cd skills/aster-deposit-fund/scri
 
 Optional env: `ETH_RPC_URL`, `BSC_RPC_URL`, `ARBITRUM_RPC_URL`.
 
-Payload shapes and optional examples: [reference.md](reference.md).
+Payload shapes: [reference.md](reference.md).

@@ -43,4 +43,6 @@ description: Public REST market data for Aster Futures API v3. Ping, time, excha
 
 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M
 
-**Conventions:** REST symbols **uppercase**; WS **lowercase**. Timestamps ms. [reference.md](reference.md) — depth/kline/ticker/exchangeInfo shapes.
+**Conventions:** REST symbols uppercase; WS lowercase; timestamps ms.
+
+Payload shapes: [reference.md](reference.md).

@@ -9,12 +9,12 @@ description: Account, balance, positions, leverage, margin type, isolated margin
 
 ## Balance and account
 
-- **GET /fapi/v3/balance** (Weight: 5). No params beyond auth. Returns array: asset, balance, crossWalletBalance, crossUnPnl, availableBalance, maxWithdrawAmount, marginAvailable, updateTime.
-- **GET /fapi/v3/account** (Weight: 5). Returns feeTier, canTrade, canDeposit, canWithdraw, totalWalletBalance, totalUnrealizedProfit, totalMarginBalance, availableBalance, maxWithdrawAmount, assets[], positions[] (all symbols).
+- **GET /fapi/v3/balance** (Weight: 5). No params beyond auth. Returns: see reference.
+- **GET /fapi/v3/account** (Weight: 5). Returns: see reference.
 
 ## Positions
 
-- **GET /fapi/v3/positionRisk** (Weight: 5). Params: symbol (optional). Returns per-symbol/positionSide: entryPrice, marginType, isAutoAddMargin, isolatedMargin, leverage, liquidationPrice, markPrice, maxNotionalValue, positionAmt, symbol, unRealizedProfit, positionSide (BOTH/LONG/SHORT), updateTime. One-way mode returns BOTH; hedge mode returns LONG and SHORT.
+- **GET /fapi/v3/positionRisk** (Weight: 5). Params: symbol (optional). Returns per-symbol/positionSide; one-way = BOTH, hedge = LONG/SHORT. Fields: see reference.
 
 ## Leverage and margin type
 
@@ -39,10 +39,10 @@ description: Account, balance, positions, leverage, margin type, isolated margin
 
 ## Other
 
-- **GET /fapi/v3/income** (Weight: 30): symbol, incomeType (optional), startTime, endTime, limit (default 100, max 1000). incomeType: TRANSFER, WELCOME_BONUS, REALIZED_PNL, FUNDING_FEE, COMMISSION, INSURANCE_CLEAR, MARKET_MERCHANT_RETURN_REWARD. Default 7-day window if no time range.
+- **GET /fapi/v3/income** (Weight: 30): symbol, incomeType (optional), startTime, endTime, limit (default 100, max 1000). Default 7-day window if no time range. incomeType values: see reference.
 - **GET /fapi/v3/leverageBracket** (Weight: 1): symbol optional; notional brackets per symbol.
 - **GET /fapi/v3/adlQuantile** (Weight: 5): symbol optional; ADL queue (0–4).
 - **GET /fapi/v3/forceOrders** (Weight: 20/50): symbol, autoCloseType (LIQUIDATION | ADL), startTime, endTime, limit (default 50, max 100).
 - **GET /fapi/v3/commissionRate** (Weight: 20): symbol required; makerCommissionRate, takerCommissionRate.
 
-[reference.md](reference.md) — response shapes, incomeType.
+Payload shapes: [reference.md](reference.md).

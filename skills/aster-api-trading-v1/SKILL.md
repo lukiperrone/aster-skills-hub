@@ -41,4 +41,4 @@ description: Place, cancel, batch, countdown-cancel, and query orders for Aster 
 - **GET /fapi/v1/openOrders** (W: 1 or 40): symbol optional; no symbol = all (40).
 - **GET /fapi/v1/allOrders** (W: 5): symbol req.; orderId, startTime, endTime, limit (500 default, 1000 max). Window &lt; 7 days; orderId → orders ≥ that id. CANCELED/EXPIRED &gt;7d with no fills may be missing.
 
-[reference.md](reference.md) — full params and response fields.
+Payload shapes: [reference.md](reference.md).

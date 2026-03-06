@@ -18,4 +18,4 @@ description: HMAC SHA256 signed requests for Aster Futures API v1. X-MBX-APIKEY,
 
 **Timing:** Server accepts if `timestamp < serverTime+1000` and `serverTime - timestamp <= recvWindow`. Use GET /fapi/v1/time if clock skew. **Security:** Env vars for key/secret; keys can be restricted (TRADE-only etc.).
 
-[reference.md](reference.md) — query/body examples (openssl + curl).
+Payload shapes: [reference.md](reference.md).

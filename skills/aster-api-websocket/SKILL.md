@@ -34,8 +34,6 @@ JSON: **Subscribe** `{"method":"SUBSCRIBE","params":["btcusdt@aggTrade","btcusdt
 
 ## User data stream
 
-Requires **signed** REST calls (see **aster-api-auth**).
-
 1. **Start:** `POST /fapi/v3/listenKey` (signed) → `{ "listenKey": "..." }`. If account already has active listenKey, same key returned and validity extended 60 min.
 2. **Connect:** `wss://fstream.asterdex.com/ws/<listenKey>`.
 3. **Keepalive:** `PUT /fapi/v3/listenKey` (signed) at least every **&lt;60 min** (e.g. every 30 min).
@@ -55,4 +53,4 @@ User data events are **not guaranteed in order** during heavy load; order update
 6. Then each event’s `pu` must equal previous event’s `u`; else re-sync from step 3.
 7. Quantity in events is **absolute**; quantity 0 means remove that price level.
 
-[reference.md](reference.md) — payload shapes.
+Payload shapes: [reference.md](reference.md).

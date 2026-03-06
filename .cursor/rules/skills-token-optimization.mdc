@@ -1,7 +1,7 @@
 ---
 description: Keep Aster skills lean for token efficiency
 globs: skills/**/SKILL.md, skills/**/reference.md
-alwaysApply: false
+alwaysApply: true
 ---
 
 # Skill token optimization

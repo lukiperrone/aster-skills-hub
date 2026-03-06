@@ -48,4 +48,4 @@ Events not guaranteed in order; use `E` for ordering. **Events:** ACCOUNT_UPDATE
 3. Drop events with `u` &lt; lastUpdateId; first valid: `U` ≤ lastUpdateId and `u` ≥ lastUpdateId.
 4. Each event: `pu` = previous `u`; else re-sync from step 2. Qty absolute; 0 = remove level.
 
-[reference.md](reference.md) — payload shapes.
+Payload shapes: [reference.md](reference.md).
