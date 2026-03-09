@@ -1,28 +1,33 @@
 # Aster Skills Hub
 
-OpenClaw skills for the **Aster Finance Futures API**.
+OpenClaw skills for the **Aster Finance Futures API** and **Spot API (testnet)**.
 
 ## What this is
 
-This repo is a collection of [AgentSkills](https://agentskills.io/)-compatible skills that teach an AI agent how to call the Aster Finance Futures API. Each skill includes a `SKILL.md` (instructions and frontmatter) and a `reference.md` (detailed API reference). They work with **OpenClaw** and any other agent that loads skills from this format.
+This repo is a collection of [AgentSkills](https://agentskills.io/)-compatible skills that teach an AI agent how to call the Aster Finance **Futures** and **Spot (testnet)** APIs. Each skill includes a `SKILL.md` (instructions and frontmatter) and a `reference.md` (detailed API reference). They work with **OpenClaw** and any other agent that loads skills from this format.
 
 Coverage includes:
 
-- **Authentication** — EIP-712 signed requests, nonce, signature
-- **Trading** — Place, cancel, and query orders
+- **Authentication** — EIP-712 signed requests, nonce, signature (Futures and Spot)
+- **Trading** — Place, cancel, and query orders (Futures and Spot)
 - **Market data** — Public REST endpoints (ping, time, depth, klines, tickers, funding, etc.)
 - **WebSocket** — Market streams and user data stream
 - **Account** — Balance, positions, transfers, income
 - **Errors** — Error codes, rate limits, retry/backoff
+- **Deposit** — Deposit funds to Aster from wallet (BAPI, supported assets, env key)
 
 ## API base URLs
 
-| Type     | URL                      |
-|----------|--------------------------|
-| REST     | `https://fapi.asterdex.com` |
-| WebSocket| `wss://fstream.asterdex.com` |
+| API     | Type      | URL                              |
+|---------|-----------|-----------------------------------|
+| Futures | REST      | `https://fapi.asterdex.com`       |
+| Futures | WebSocket | `wss://fstream.asterdex.com`      |
+| Spot (testnet) | REST      | `https://sapi.asterdex-testnet.com` |
+| Spot (testnet) | WebSocket | `wss://sstream.asterdex-testnet.com` |
 
 ## Skills
+
+### Futures API
 
 | Skill | Purpose |
 |-------|---------|
@@ -38,6 +43,28 @@ Coverage includes:
 | **aster-api-account-v1** | Same for v1 API |
 | **aster-api-errors-v3** | Error codes, rate limits, 429/418 handling, retry/backoff |
 | **aster-api-errors-v1** | Same for v1 API |
+
+### Spot API (testnet)
+
+| Skill | Purpose |
+|-------|---------|
+| **aster-api-spot-auth-v3** | EIP-712 signed requests for Spot testnet (/api/v3/) |
+| **aster-api-spot-auth-v1** | Same for v1 |
+| **aster-api-spot-trading-v3** | Spot orders: place, cancel, query (open/history) |
+| **aster-api-spot-trading-v1** | Same for v1 |
+| **aster-api-spot-market-data-v3** | Public REST: ping, time, exchangeInfo, depth, trades, klines, tickers |
+| **aster-api-spot-market-data-v1** | Same for v1 |
+| **aster-api-spot-websocket-v3** | WebSocket: market + user data streams, listenKey |
+| **aster-api-spot-websocket-v1** | Same for v1 |
+| **aster-api-spot-account-v3** | Spot account, balance |
+| **aster-api-spot-account-v1** | Same for v1 |
+| **aster-api-spot-errors-v3** | Error codes, rate limits, retry/backoff |
+| **aster-api-spot-errors-v1** | Same for v1 |
+
+### Other
+
+| Skill | Purpose |
+|-------|---------|
 | **aster-deposit-fund** | Deposit funds to Aster from wallet; supported assets and deposit address via BAPI; private key from env; ETH, BSC, Arbitrum |
 
 ## Using with OpenClaw
@@ -102,7 +129,7 @@ OpenClaw loads skills from, in order of precedence:
 
 **Option A — Workspace skills**
 
-Clone this repo and copy or symlink its `skills/` contents into your OpenClaw workspace skills folder (often `~/.openclaw/workspace/skills/`). Each skill should appear as its own folder, e.g. `~/.openclaw/workspace/skills/aster-api-auth-v3`, `~/.openclaw/workspace/skills/aster-api-trading-v3`, and so on.
+Clone this repo and copy or symlink its `skills/` contents into your OpenClaw workspace skills folder (often `~/.openclaw/workspace/skills/`). Each skill should appear as its own folder, e.g. `~/.openclaw/workspace/skills/aster-api-auth-v3`, `~/.openclaw/workspace/skills/aster-api-spot-trading-v3`, and so on.
 
 **Option B — Extra skill dirs**
 
